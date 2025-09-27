@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome <%=user ? user.firstname : "Guest" %></h1>
+    <% if (!user){%>
+    <a href="/log-in">log in</a>
+    <%}%>
+    <% if (user) { %>
+      <a href="/newMessage">Create a new message</a> <a href="/log-in/log-out">log out</a>
+    <%}%>
+
+    <% if (messages.length>0) {%>
+    <ul>
+      <% messages.forEach( message => {%>
+        <li>
+        <h2><%=message.title%></h2>
+        <p>author : <%=user ? message.firstname + " " + message.lastname : "anonymous" %></p>
+        <p> timestamp: <%=message.timestamp%></p>
+        <p>content : <%=message.text%></p>       
+        </li>
+        <%})%>
+    </ul>
+   <%}%>    
+
+</body>
+</html>
